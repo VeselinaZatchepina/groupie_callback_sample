@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), CardItem.CardClickListener {
         setContentView(R.layout.activity_main)
         initAdapter()
         observeColors()
-        mainViewModel.getColors()
+        mainViewModel.shuffleColors()
     }
 
     private fun initAdapter() {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), CardItem.CardClickListener {
         })
     }
 
-    override fun shuffleColors() {
-        mainViewModel.getColors()
+    override fun onCardClick() {
+        mainViewModel.shuffleColors()
     }
 }

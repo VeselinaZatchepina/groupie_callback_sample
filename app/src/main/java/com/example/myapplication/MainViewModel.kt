@@ -16,7 +16,7 @@ class MainViewModel : ViewModel() {
     )
     val liveColors = MutableLiveData<List<Int>>()
 
-    fun getColors() {
+    fun shuffleColors() {
         liveColors.value = colors.shuffled()
     }
 }

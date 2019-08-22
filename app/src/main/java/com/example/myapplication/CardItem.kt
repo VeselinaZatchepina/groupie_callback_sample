@@ -10,7 +10,7 @@ class CardItem(private val color: Int, private val listener: CardClickListener) 
         with(viewHolder.itemView) {
             card.setCardBackgroundColor(color)
             card.setOnClickListener {
-                listener.shuffleColors()
+                listener.onCardClick()
             }
         }
     }
@@ -19,6 +19,6 @@ class CardItem(private val color: Int, private val listener: CardClickListener) 
 
     interface CardClickListener {
 
-        fun shuffleColors()
+        fun onCardClick()
     }
 }
