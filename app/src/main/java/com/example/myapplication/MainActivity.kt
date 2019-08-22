@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.items.CardItem
+import com.example.myapplication.items.CircleItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * Список карточек с разыми цветами.
  * При нажатии цвет карточек меняется.
  */
-class MainActivity : AppCompatActivity(), CardItem.CardClickListener {
+class MainActivity : AppCompatActivity() {
 
     private val mainViewModel by lazy {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
@@ -39,11 +41,21 @@ class MainActivity : AppCompatActivity(), CardItem.CardClickListener {
 
     private fun observeColors() {
         mainViewModel.liveColors.observe(this, Observer { colors ->
-            contentGroupAdapter.update(colors.map { CardItem(it, this) })
+            contentGroupAdapter.update(ItemBuilder(colors, cardClickListener, circleClickListener).build())
         })
     }
 
-    override fun onCardClick() {
-        mainViewModel.shuffleColors()
+    private val cardClickListener = object : CardItem.CardClickListener {
+
+        override fun onCardClick() {
+            mainViewModel.shuffleColors()
+        }
+    }
+
+    private val circleClickListener = object : CircleItem.CircleClickListener {
+
+        override fun onCircleClick() {
+            mainViewModel.shuffleColors()
+        }
     }
 }

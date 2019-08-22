@@ -9,10 +9,7 @@ class MainViewModel : ViewModel() {
     private val colors = listOf(
         Color.parseColor("#9AE29F"),
         Color.parseColor("#EB7D71"),
-        Color.parseColor("#8FC1E7"),
-        Color.parseColor("#F5BF61"),
-        Color.parseColor("#87CCC9"),
-        Color.parseColor("#D795E4")
+        Color.parseColor("#8FC1E7")
     )
     val liveColors = MutableLiveData<List<Int>>()
 
