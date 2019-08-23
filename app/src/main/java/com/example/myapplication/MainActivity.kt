@@ -12,7 +12,6 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 /**
  * Список карточек с разыми цветами.
  * При нажатии цвет карточек меняется.
@@ -22,7 +21,8 @@ class MainActivity : AppCompatActivity() {
     private val mainViewModel by lazy {
         ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
-    private lateinit var contentGroupAdapter: GroupAdapter<ViewHolder>
+
+    private val contentGroupAdapter: GroupAdapter<ViewHolder> = GroupAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        contentGroupAdapter = GroupAdapter()
         recyclerView.adapter = contentGroupAdapter
         recyclerView.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -45,14 +44,14 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private val cardClickListener = object : CardItem.CardClickListener {
+    private val cardClickListener = object : CardItem.Listener {
 
         override fun onCardClick() {
             mainViewModel.shuffleColors()
         }
     }
 
-    private val circleClickListener = object : CircleItem.CircleClickListener {
+    private val circleClickListener = object : CircleItem.Listener {
 
         override fun onCircleClick() {
             mainViewModel.shuffleColors()

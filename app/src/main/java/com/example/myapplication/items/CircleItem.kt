@@ -5,7 +5,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_card.view.*
 
-class CircleItem(private val color: Int, private val listener: CircleClickListener) : Item() {
+class CircleItem(private val color: Int, private val listener: Listener) : Item() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         with(viewHolder.itemView) {
@@ -18,7 +18,7 @@ class CircleItem(private val color: Int, private val listener: CircleClickListen
 
     override fun getLayout() = R.layout.item_circle
 
-    interface CircleClickListener {
+    interface Listener {
 
         fun onCircleClick()
     }
