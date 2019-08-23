@@ -6,8 +6,8 @@ import com.xwray.groupie.Group
 
 class ItemBuilder(
     private val colors: List<Int>,
-    private val cardListener: CardItem.CardClickListener,
-    private val circleListener: CircleItem.CircleClickListener
+    private val cardListener: CardItem.Listener,
+    private val circleListener: CircleItem.Listener
 ) {
 
     fun build(): List<Group> {
